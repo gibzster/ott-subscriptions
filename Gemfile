@@ -32,7 +32,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap', '~> 4.2.1'
-
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

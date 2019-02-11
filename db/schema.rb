@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190211114454) do
+ActiveRecord::Schema.define(version: 20190211194907) do
 
   create_table "customers", force: :cascade do |t|
     t.string "email"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20190211114454) do
 
   create_table "subscriptions", force: :cascade do |t|
     t.string "billing_type"
-    t.date "subscribed_at"
+    t.datetime "subscribed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,29 +1,31 @@
+<div class="input-group mb-3 row justify-content-end" id="#searching">
+  <input class="form-control col-2" type="text" placeholder="Search" id="#search-input" style="background: white">
+  <div class="input-group-append" style="background: white">
+  <span class="input-group">
+    <img src="/assets/search-mono.svg" alt="?" style="width: 20px; margin-right: 10px; background: white"/>
+  </span>
+  </div>
+</div>
 <div class="table-responsive d-none d-lg-flex flex-column">
   <table class="table table-hover">
     <thead>
     <tr>
-      <th >#</th>
-      <th >First</th>
-      <th >Last</th>
+      <th >Customer</th>
+      <th >Product</th>
+      <th >PAGE</th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-      <th >1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-    </tr>
-    <tr>
-      <th >2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-    </tr>
-    <tr>
-      <th >3</th>
-      <td colspan="2">Larry the Bird</td>
-    </tr>
+    <% @subscriptions.each do |subscription| %>
+      <tr>
+        <td ><%= subscription.customer.email %></td>
+        <td ><%= subscription.product.name %></td>
+        <td ><%=time_ago_in_words(subscription.subscribed_at)%> ago</td>
+      </tr>
+    <% end %>
     </tbody>
   </table>
+  <%= paginate @subscriptions %>
 </div>
 
 

@@ -1,16 +1,16 @@
-<%= form_tag root_path, method: :get do %>
-  <div class="input-group mb-3 row justify-content-end" id="#searching">
-    <%= text_field_tag :query, "" , :class => "form-control col-2 no-border"%>
-    <div class="input-group-append rounded-right" style="background: white">
-  <span class="input-group" id="#x">
-    <img src="/assets/search-mono.svg" alt="?" style="width: 20px; margin-right: 10px; background: white; height: 30px;"/>
-<!--    <button style="background: url(/assets/search-mono.svg)"; background-repeat: no-repeat; />-->
-<!--    <button class="btn btn-primary"><img src="/assets/search-mono.svg"></button>-->
-  </span>
+<div class="d-none d-md-block">
+  <%= form_tag root_path, method: :get do %>
+    <div class="input-group mb-3 row justify-content-end" id="#search-input">
+      <%= text_field_tag :query, "" , :class => "form-control col-2 no-border"%>
+      <div class="input-group-append rounded-right" id="#icon-wrapper">
+        <span class="input-group" id="#search-icon">
+          <%= image_tag("search-mono.svg") %>
+        </span>
+      </div>
     </div>
-<% end %>
-
+  <% end %>
 </div>
+
 <div class="table-responsive d-none d-lg-flex flex-column">
   <table class="table table-hover">
     <thead>
@@ -33,12 +33,26 @@
   <%= paginate @subscriptions %>
 </div>
 
-
-<table class="table table-hover d-lg-none">
-  <tbody>
-  <tr>
-    <th >1 </br> Mark</th>
-    <td>Otto</td>
-  </tr>
-</table>
+<div class="d-lg-none">
+  <div id="#mobile-header">
+    <%= image_tag("member.svg", size: "100x100", alt: "Edit Entry", id: "#member-img") %>
+    <div id="#table-info-div" class="col-7">
+      <p id="#mobile-table-header">CUSTOMERS</p>
+      <p id="#mobile-table-description">Most recent activity from your entire audience</p>
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table">
+      <tbody>
+      <% @subscriptions.each do |subscription| %>
+        <tr class="mobile-table-text">
+          <td class="mobile-sub-info"><span><%= subscription.customer.email %></span></br> <%= subscription.product.name %> </td>
+          <td style="text-align: right;"><%=time_ago_in_words(subscription.subscribed_at)%> ago</td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <%= paginate @subscriptions %>
+  </div>
+</div>
 

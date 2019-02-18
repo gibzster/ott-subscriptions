@@ -2,7 +2,7 @@ class SubscriptionsController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :set_subscription, only: [:show, :update, :destroy]
   def index
-    @subscriptions = Subscription.all
+    @subscriptions = Subscription.all.page(params[:page])
     render json: @subscriptions, include: {customer: {except: %i[created_at updated_at]}, product: {except: %i[created_at updated_at]}}, except: %i[created_at updated_at customer_id product_id]
   end
 

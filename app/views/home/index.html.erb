@@ -1,10 +1,15 @@
-<div class="input-group mb-3 row justify-content-end" id="#searching">
-  <input class="form-control col-2" type="text" placeholder="Search" id="#search-input" style="background: white">
-  <div class="input-group-append" style="background: white">
-  <span class="input-group">
-    <img src="/assets/search-mono.svg" alt="?" style="width: 20px; margin-right: 10px; background: white"/>
+<%= form_tag root_path, method: :get do %>
+  <div class="input-group mb-3 row justify-content-end" id="#searching">
+    <%= text_field_tag :query, "" , :class => "form-control col-2 no-border"%>
+    <div class="input-group-append rounded-right" style="background: white">
+  <span class="input-group" id="#x">
+    <img src="/assets/search-mono.svg" alt="?" style="width: 20px; margin-right: 10px; background: white; height: 30px;"/>
+<!--    <button style="background: url(/assets/search-mono.svg)"; background-repeat: no-repeat; />-->
+<!--    <button class="btn btn-primary"><img src="/assets/search-mono.svg"></button>-->
   </span>
-  </div>
+    </div>
+<% end %>
+
 </div>
 <div class="table-responsive d-none d-lg-flex flex-column">
   <table class="table table-hover">
